@@ -1,4 +1,4 @@
-# Wolvesville Authentication and Turnstile Bypass Script
+# Wolvesville Login
 
 This Python script is designed to automate the process of bypassing the Cloudflare Turnstile challenge and logging into the Wolvesville authentication API. It uses several Python libraries for HTTP requests, timezone handling, and colorized console outputs.
 
