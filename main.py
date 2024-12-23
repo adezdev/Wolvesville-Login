@@ -126,7 +126,7 @@ class Login:
 def main():
     os.system('cls' if os.name == 'nt' else 'clear')
     # key get in xevil | https://t.me/Xevil_check_bot?start=5566449246
-    key = 'i6v6Eci3hizBqJ0Kzb4j7tAVhdqNKjlS'
+    key = 'paste your key'
     print(f"{magenta}[{getTime()}] {red}➩ {green}Starting process...")
     print(f"{magenta}[{getTime()}] {red}➩ {green}UTC Time: {getUtcTime()}")
     
