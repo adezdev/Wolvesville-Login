@@ -1,56 +1,143 @@
-Wolvesville Login Script
-This Python script automates the login process to the Wolvesville website. It performs the following tasks:
+# Wolvesville Authentication and Turnstile Bypass Script
 
-Bypasses the Cloudflare Turnstile verification.
-Obtains a JWT token.
-Logs into the Wolvesville account using the provided credentials.
-Prerequisites
-Python 3.x
-Required Python packages: requests, pytz, colorama
-Installation
-Before running the script, you need to install the required Python packages. You can do this by running:
+This Python script is designed to automate the process of bypassing the Cloudflare Turnstile challenge and logging into the Wolvesville authentication API. It uses several Python libraries for HTTP requests, timezone handling, and colorized console outputs.
 
+---
+
+## Features
+
+- **Turnstile Challenge Bypass**: Automates bypassing the Cloudflare Turnstile using the SCTG API.
+- **Token Management**: Retrieves a JSON Web Token (JWT) for secure communication with Wolvesville servers.
+- **Automated Login**: Logs into Wolvesville accounts using email and password credentials.
+- **Timestamp Logging**: Provides detailed timestamps for every operation.
+
+---
+
+## Requirements
+
+### Prerequisites
+
+Ensure you have the following installed before running the script:
+
+- **Python**: Version 3.6 or higher.
+- **Python Libraries**: Install the required libraries using `pip`.
+
+### Installation
+
+Install the required Python libraries by running:
+```bash
 pip install requests pytz colorama
-Usage
-Clone the repository or download the script file.
-bash
-git clone <repository-url>
-cd <repository-directory>
-Open the script file and replace the email and password in the login method with your Wolvesville account credentials.
-Python
-data = {
-    'email': 'your_email@example.com',
-    'password': 'your_password',
-}
-Run the script.
-python login_script.py
-Script Explanation
-Functions
-getTime(): Returns the current time in the Asia/Ho_Chi_Minh timezone.
-getUtcTime(): Returns the current UTC time.
-Classes
-Login: Handles the login process.
+```
 
-__init__(self, key): Initializes the Login class with the provided API key.
-turnstile(self): Bypasses the Cloudflare Turnstile verification and obtains the turnstile token.
-getToken(self): Uses the turnstile token to get a JWT token.
-login(self): Logs into the Wolvesville account using the provided credentials and JWT token.
-Main Function
-main(): Clears the console, prints the starting process message, initializes the Login class with the API key, and performs the login process.
-Example
-bash
-$ python login_script.py
-[09:00:00] ➩ Starting process...
-[09:00:00] ➩ UTC Time: 2024-12-23 02:50:00
-Task ID: 123456
-[09:00:10] ➩ Bypass Turnstile Done!
-[09:00:20] ➩ JWT Token obtained!
-[09:00:30] ➩ Login response: {'idToken': 'abc123', ...}
-[09:00:30] ➩ Login successful!
-Notes
-Ensure you have the correct API key and account credentials.
-This script is for educational purposes only. Use it responsibly.
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+---
 
-Feel free to customize the README file as per your needs. If you encounter any issues or have any questions, please open an issue in the repository.
+## File Structure
+
+The project consists of a single Python script file that performs all functionalities.
+
+### Script Overview
+
+#### Imports
+- **`os`**: Used to clear the console for better visibility.
+- **`datetime` and `pytz`**: Handle timezone-specific timestamps.
+- **`requests`**: Manage HTTP communication with APIs.
+- **`time`**: Introduce delays during the Turnstile bypass process.
+- **`colorama`**: Provides colorized output for better readability.
+
+#### Functions and Classes
+
+1. **Helper Functions**:
+   - `getTime()`: Returns the current time in the `Asia/Ho_Chi_Minh` timezone.
+   - `getUtcTime()`: Returns the current UTC time.
+
+2. **Class: `Login`**:
+   - `__init__(self, key)`: Initializes a new session and stores the API key.
+   - `turnstile()`: Automates the process of bypassing the Turnstile challenge using SCTG API.
+   - `getToken()`: Retrieves a JWT token using the bypassed Turnstile token.
+   - `login()`: Logs into Wolvesville using email and password credentials.
+
+3. **Main Function**:
+   - Clears the console, initializes the `Login` object, and sequentially executes the bypass and login steps.
+
+---
+
+## Setup
+
+1. **Clone or Download**
+   Download the repository or clone it using Git:
+   ```bash
+   git clone <repository-url>
+   ```
+
+2. **Configure the API Key**
+   Obtain an API key from the SCTG service. Update the `key` variable in the `main()` function with your key:
+   ```python
+   key = 'your_api_key_here'
+   ```
+
+3. **Update Credentials**
+   Replace the placeholder email and password in the `login()` method with your Wolvesville account credentials:
+   ```python
+   data = {
+       'email': 'your_email@example.com',
+       'password': 'your_password',
+   }
+   ```
+
+---
+
+## Usage
+
+1. **Run the Script**
+   Execute the script from the terminal:
+   ```bash
+   python script_name.py
+   ```
+   Replace `script_name.py` with the name of the Python file.
+
+2. **Expected Output**
+   The script will display step-by-step progress:
+   ```plaintext
+   [15:30:45] ➩ Starting process...
+   [15:30:45] ➩ UTC Time: 2023-04-05 08:30:45
+   Task ID: 12345678
+   [15:30:55] ➩ Bypass Turnstile Done!
+   [15:31:00] ➩ JWT Token obtained!
+   [15:31:05] ➩ Login successful!
+   ```
+
+---
+
+## Troubleshooting
+
+### Common Errors
+
+1. **API Key Issues**:
+   - Ensure the provided API key is valid and correctly entered.
+   - If the key is invalid, the script will display an error.
+
+2. **Login Errors**:
+   - Verify the email and password credentials.
+   - Check if Wolvesville servers are online.
+
+3. **Module Not Found**:
+   - Install the required dependencies using `pip`.
+
+### Debugging Tips
+
+- Use print statements to inspect variables at various points in the script.
+- Check the API documentation for SCTG and Wolvesville for updates on required parameters.
+
+---
+
+## Notes
+
+- This script is for **educational purposes only**. Ensure you have permission to access and use the services involved.
+- Protect sensitive information, such as API keys and account credentials. Do not share them publicly.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
