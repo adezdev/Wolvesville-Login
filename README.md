@@ -66,7 +66,7 @@ The project consists of a single Python script file that performs all functional
 1. **Clone or Download**
    Download the repository or clone it using Git:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/adezdev/Wolvesville-Login.git
    ```
 
 2. **Configure the API Key**
@@ -137,7 +137,4 @@ The project consists of a single Python script file that performs all functional
 
 ---
 
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
 
